@@ -1,0 +1,25 @@
+OverTime,BusinessTravel,Distance_Category,Employee_Count,Departed_Count,Attrition_Rate,Avg_Work_Life_Balance,Avg_Job_Satisfaction,Avg_Environment_Satisfaction
+true,Travel_Frequently,Far (16-25 km),18,10,55.56,2.72,2.83,3.11
+true,Travel_Frequently,Moderate (6-15 km),22,10,45.45,2.91,2.68,2.77
+true,Travel_Rarely,Far (16-25 km),54,22,40.74,2.61,2.65,2.89
+false,Travel_Frequently,Very Far (25+ km),13,5,38.46,3.23,2.15,2.38
+true,Travel_Frequently,Close (1-5 km),40,14,35.0,2.8,3.0,2.67
+true,Travel_Frequently,Very Far (25+ km),6,2,33.33,2.67,3.17,2.33
+true,Non-Travel,Very Far (25+ km),3,1,33.33,2.33,3.0,2.33
+true,Travel_Rarely,Very Far (25+ km),10,3,30.0,3.1,2.7,3.1
+true,Non-Travel,Far (16-25 km),10,3,30.0,2.8,2.8,2.9
+true,Travel_Rarely,Close (1-5 km),120,31,25.83,2.72,2.86,2.91
+true,Travel_Rarely,Moderate (6-15 km),111,28,25.23,2.67,2.64,2.83
+true,Non-Travel,Moderate (6-15 km),10,2,20.0,3.0,2.8,3.0
+false,Travel_Frequently,Moderate (6-15 km),64,11,17.19,2.64,2.75,2.64
+false,Travel_Frequently,Close (1-5 km),85,14,16.47,2.75,2.64,2.69
+false,Travel_Rarely,Far (16-25 km),113,16,14.16,2.67,2.66,2.68
+false,Non-Travel,Very Far (25+ km),8,1,12.5,2.88,2.38,2.13
+false,Travel_Rarely,Moderate (6-15 km),264,29,10.98,2.8,2.66,2.66
+false,Travel_Frequently,Far (16-25 km),29,3,10.34,2.86,3.31,2.72
+true,Non-Travel,Close (1-5 km),12,1,8.33,2.92,2.75,2.42
+false,Travel_Rarely,Close (1-5 km),324,26,8.02,2.83,2.71,2.68
+false,Non-Travel,Far (16-25 km),18,1,5.56,2.94,2.72,2.72
+false,Non-Travel,Moderate (6-15 km),38,2,5.26,2.71,2.92,2.68
+false,Travel_Rarely,Very Far (25+ km),47,1,2.13,2.57,2.77,2.64
+false,Non-Travel,Close (1-5 km),51,1,1.96,2.69,2.78,2.88

@@ -1,0 +1,5 @@
+Income_Quartile,Min_Salary,Max_Salary,Average_Salary,Employee_Count,Departed_Count,Attrition_Rate,Average_Job_Satisfaction,Average_Salary_Hike_Percent
+1,1009,2911,2353.0,368,108,29.35,2.74,15.4
+2,2911,4930,3964.0,368,52,14.13,2.69,15.2
+3,4936,8380,6191.0,367,39,10.63,2.8,15.0
+4,8381,19999,13522.0,367,38,10.35,2.69,15.2
