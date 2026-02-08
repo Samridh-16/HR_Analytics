@@ -105,14 +105,6 @@ This project includes:
 - Work environment risk evaluation
 - High-risk employee identification logic
 
-### Advanced SQL Techniques Applied:
-
-- Common Table Expressions (CTEs)
-- NTILE quartile segmentation
-- Conditional risk scoring
-- Attrition percentage calculations
-- Multi-factor grouping and ranking
-
 ---
 
 ## Key Business Insights
