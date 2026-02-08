@@ -1,0 +1,41 @@
+-- Query 9: High-Risk Employee Identification
+SELECT 
+    EmployeeNumber,
+    Age,
+    Department,
+    JobRole,
+    MonthlyIncome,
+    YearsAtCompany,
+    MaritalStatus,
+    OverTime,
+    BusinessTravel,
+    JobSatisfaction,
+    WorkLifeBalance,
+    YearsSinceLastPromotion,
+    (CASE WHEN OverTime = TRUE THEN 1 ELSE 0 END +
+     CASE WHEN JobSatisfaction <= 2 THEN 1 ELSE 0 END +
+     CASE WHEN WorkLifeBalance <= 2 THEN 1 ELSE 0 END +
+     CASE WHEN MonthlyIncome < 5000 THEN 1 ELSE 0 END +
+     CASE WHEN YearsSinceLastPromotion > 3 THEN 1 ELSE 0 END +
+     CASE WHEN MaritalStatus = 'Single' THEN 1 ELSE 0 END +
+     CASE WHEN BusinessTravel = 'Travel_Frequently' THEN 1 ELSE 0 END) as Risk_Score,
+    CASE 
+        WHEN (CASE WHEN OverTime = True THEN 1 ELSE 0 END +
+              CASE WHEN JobSatisfaction <= 2 THEN 1 ELSE 0 END +
+              CASE WHEN WorkLifeBalance <= 2 THEN 1 ELSE 0 END +
+              CASE WHEN MonthlyIncome < 5000 THEN 1 ELSE 0 END +
+              CASE WHEN YearsSinceLastPromotion > 3 THEN 1 ELSE 0 END +
+              CASE WHEN MaritalStatus = 'Single' THEN 1 ELSE 0 END +
+              CASE WHEN BusinessTravel = 'Travel_Frequently' THEN 1 ELSE 0 END) >= 4 THEN 'High Risk'
+        WHEN (CASE WHEN OverTime = True THEN 1 ELSE 0 END +
+              CASE WHEN JobSatisfaction <= 2 THEN 1 ELSE 0 END +
+              CASE WHEN WorkLifeBalance <= 2 THEN 1 ELSE 0 END +
+              CASE WHEN MonthlyIncome < 5000 THEN 1 ELSE 0 END +
+              CASE WHEN YearsSinceLastPromotion > 3 THEN 1 ELSE 0 END +
+              CASE WHEN MaritalStatus = 'Single' THEN 1 ELSE 0 END +
+              CASE WHEN BusinessTravel = 'Travel_Frequently' THEN 1 ELSE 0 END) = 3 THEN 'Medium Risk'
+        ELSE 'Low Risk'
+    END as Risk_Category
+FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`
+WHERE Attrition = FALSE
+ORDER BY Risk_Score DESC, MonthlyIncome ASC;

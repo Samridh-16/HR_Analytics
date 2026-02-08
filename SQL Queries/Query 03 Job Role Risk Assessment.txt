@@ -1,0 +1,13 @@
+-- Query 3: Job Role Risk Assessment
+SELECT 
+    JobRole,
+    COUNT(*) as Total_Employees,
+    SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) as Departed_Employees,
+    ROUND(SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as Attrition_Rate,
+    ROUND(AVG(CASE WHEN Attrition = False THEN MonthlyIncome END), 0) as Avg_Retained_Salary,
+    ROUND(AVG(CASE WHEN Attrition = True THEN MonthlyIncome END), 0) as Avg_Departed_Salary,
+    ROUND(AVG(JobSatisfaction), 2) as Average_Job_Satisfaction,
+    ROUND(AVG(YearsAtCompany), 1) as Average_Tenure
+FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`
+GROUP BY JobRole
+ORDER BY Attrition_Rate DESC;

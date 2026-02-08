@@ -1,0 +1,15 @@
+-- Query 8: Satisfaction Scores Deep Dive
+SELECT 
+    JobSatisfaction,
+    EnvironmentSatisfaction, 
+    RelationshipSatisfaction,
+    WorkLifeBalance,
+    COUNT(*) as Employee_Count,
+    SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) as Departed_Count,
+    ROUND(SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as Attrition_Rate,
+    ROUND(AVG(MonthlyIncome), 0) as Average_Income,
+    ROUND(AVG(Age), 1) as Average_Age,
+    ROUND((JobSatisfaction + EnvironmentSatisfaction + RelationshipSatisfaction + WorkLifeBalance) / 4, 2) as Overall_Satisfaction_Score
+FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`
+GROUP BY JobSatisfaction, EnvironmentSatisfaction, RelationshipSatisfaction, WorkLifeBalance
+ORDER BY Attrition_Rate DESC;

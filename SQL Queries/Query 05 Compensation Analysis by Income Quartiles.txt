@@ -1,0 +1,20 @@
+-- Query 5: Compensation Analysis by Income Quartiles
+WITH Income_Quartiles AS (
+    SELECT 
+        *,
+        NTILE(4) OVER (ORDER BY MonthlyIncome) as Income_Quartile
+    FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`
+)
+SELECT 
+    Income_Quartile,
+    MIN(MonthlyIncome) as Min_Salary,
+    MAX(MonthlyIncome) as Max_Salary,
+    ROUND(AVG(MonthlyIncome), 0) as Average_Salary,
+    COUNT(*) as Employee_Count,
+    SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) as Departed_Count,
+    ROUND(SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as Attrition_Rate,
+    ROUND(AVG(JobSatisfaction), 2) as Average_Job_Satisfaction,
+    ROUND(AVG(PercentSalaryHike), 1) as Average_Salary_Hike_Percent
+FROM Income_Quartiles
+GROUP BY Income_Quartile
+ORDER BY Income_Quartile;

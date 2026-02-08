@@ -1,0 +1,11 @@
+-- Query 1: Employee Overview and Attrition Summary
+SELECT 
+    COUNT(*) as Total_Employees,
+    SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) as Total_Attrition,
+    ROUND(SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as Overall_Attrition_Rate,
+    ROUND(AVG(Age), 1) as Average_Age,
+    ROUND(AVG(MonthlyIncome), 0) as Average_Monthly_Income,
+    ROUND(AVG(YearsAtCompany), 1) as Average_Tenure,
+    COUNT(DISTINCT Department) as Number_of_Departments,
+    COUNT(DISTINCT JobRole) as Number_of_Job_Roles
+FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`;

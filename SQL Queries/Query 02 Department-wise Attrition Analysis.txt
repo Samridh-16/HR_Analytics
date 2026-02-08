@@ -1,0 +1,12 @@
+-- Query 2: Department-wise Attrition Analysis
+SELECT 
+    Department,
+    COUNT(*) as Total_Employees,
+    SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) as Departed_Employees,
+    ROUND(SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as Attrition_Rate,
+    ROUND(AVG(MonthlyIncome), 0) as Average_Department_Salary,
+    ROUND(AVG(JobSatisfaction), 2) as Average_Job_Satisfaction,
+    ROUND(AVG(WorkLifeBalance), 2) as Average_Work_Life_Balance
+FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`
+GROUP BY Department
+ORDER BY Attrition_Rate DESC;

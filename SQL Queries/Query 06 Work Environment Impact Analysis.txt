@@ -1,0 +1,22 @@
+-- Query 6: Work Environment Impact Analysis
+SELECT 
+    OverTime,
+    BusinessTravel,
+    CASE 
+        WHEN DistanceFromHome <= 5 THEN 'Close (1-5 km)'
+        WHEN DistanceFromHome BETWEEN 6 AND 15 THEN 'Moderate (6-15 km)' 
+        WHEN DistanceFromHome BETWEEN 16 AND 25 THEN 'Far (16-25 km)'
+        ELSE 'Very Far (25+ km)'
+    END as Distance_Category,
+    COUNT(*) as Employee_Count,
+    SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) as Departed_Count,
+    ROUND(SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as Attrition_Rate,
+    ROUND(AVG(WorkLifeBalance), 2) as Avg_Work_Life_Balance,
+    ROUND(AVG(JobSatisfaction), 2) as Avg_Job_Satisfaction,
+    ROUND(AVG(EnvironmentSatisfaction), 2) as Avg_Environment_Satisfaction
+FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`
+GROUP BY 
+    OverTime,
+    BusinessTravel,
+    Distance_Category
+ORDER BY Attrition_Rate DESC;

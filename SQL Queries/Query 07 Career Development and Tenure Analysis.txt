@@ -1,0 +1,26 @@
+-- Query 7: Career Development and Tenure Analysis
+SELECT 
+    CASE 
+        WHEN YearsAtCompany < 2 THEN '0-2 years'
+        WHEN YearsAtCompany BETWEEN 2 AND 5 THEN '2-5 years'
+        WHEN YearsAtCompany BETWEEN 6 AND 10 THEN '6-10 years'
+        ELSE '10+ years'
+    END as Tenure_Group,
+    JobLevel,
+    CASE 
+        WHEN YearsSinceLastPromotion = 0 THEN 'Recently Promoted'
+        WHEN YearsSinceLastPromotion BETWEEN 1 AND 2 THEN '1-2 years since promotion'
+        WHEN YearsSinceLastPromotion BETWEEN 3 AND 5 THEN '3-5 years since promotion'
+        ELSE '5+ years since promotion'
+    END as Promotion_Recency,
+    COUNT(*) as Employee_Count,
+    SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) as Departed_Count,
+    ROUND(SUM(CASE WHEN Attrition = TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as Attrition_Rate,
+    ROUND(AVG(TrainingTimesLastYear), 1) as Avg_Training_Sessions,
+    ROUND(AVG(MonthlyIncome), 0) as Average_Income
+FROM `elaborate-art-471212-d9.HR_Employee_attrition.HR_Employee_Attrition_checked`
+GROUP BY 
+    Tenure_Group,
+    JobLevel,
+    Promotion_Recency
+ORDER BY Attrition_Rate DESC;
